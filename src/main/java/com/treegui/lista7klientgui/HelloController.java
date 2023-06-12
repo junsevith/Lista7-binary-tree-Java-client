@@ -44,7 +44,17 @@ public class HelloController {
    }
 
    public void popup() {
+      stage.setOnCloseRequest(p->{
+         try {
+            client.stopConnection();
+         } catch (IOException e) {
+            throw new RuntimeException(e);
+         }
+      });
       final Stage dialog = new Stage();
+      dialog.setOnCloseRequest(p->{
+         stage.close();
+      });
       dialog.initModality(Modality.APPLICATION_MODAL);
       dialog.initOwner(stage);
       VBox dialogVbox = new VBox(20);
