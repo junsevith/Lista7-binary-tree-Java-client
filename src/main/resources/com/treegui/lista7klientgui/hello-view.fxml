@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.treegui.lista7klientgui.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.treegui.lista7klientgui.HelloController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <HBox spacing="10.0">
+      <children>
+         <ChoiceBox fx:id="chooseCommand" prefWidth="150.0" />
+         <TextField fx:id="input" promptText="Klucz elementu" />
+          <Button fx:id="button" text="Zatwierdź" />
+      </children>
+   </HBox>
+   <Label fx:id="display" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" style="-fx-border-color: gray;" VBox.vgrow="ALWAYS">
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding></Label>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label fx:id="label" maxWidth="1.7976931348623157E308" prefHeight="20.0" />
 </VBox>
