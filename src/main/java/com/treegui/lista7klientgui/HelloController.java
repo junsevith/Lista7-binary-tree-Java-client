@@ -1,5 +1,6 @@
 package com.treegui.lista7klientgui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -52,9 +53,7 @@ public class HelloController {
          }
       });
       final Stage dialog = new Stage();
-      dialog.setOnCloseRequest(p->{
-         stage.close();
-      });
+      dialog.setOnCloseRequest(p-> stage.close());
       dialog.initModality(Modality.APPLICATION_MODAL);
       dialog.initOwner(stage);
       VBox dialogVbox = new VBox(20);
@@ -102,15 +101,21 @@ public class HelloController {
    public void startTree(){
       client.out.println(chooseType.getValue());
       readOutput();
+
       chooseCommand.getItems().add(new command("Dodaj", "insert"));
       chooseCommand.getItems().add(new command("Usuń", "remove"));
       chooseCommand.getItems().add(new command("Wyszukaj", "search"));
       chooseCommand.getSelectionModel().selectFirst();
-      button.setOnAction(p ->{
-         client.out.println(chooseCommand.getValue().command + " " + input.getText());
-         readOutput();
-         displayTree();
-      });
+
+      button.setOnAction(this::commit);
+      input.setOnAction(this::commit);
+   }
+
+   private void commit(ActionEvent actionEvent) {
+      client.out.println(chooseCommand.getValue().command + " " + input.getText());
+      readOutput();
+      displayTree();
+      input.clear();
    }
 
    private static class command{
